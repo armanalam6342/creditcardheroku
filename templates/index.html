@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Defaulter or Not Defaulter</title>
+    <style>
+        body {
+          background-image:url({{url_for('static',filename='1.jpg')}});
+          background-size: 100% 100%; 
+        }
+        table, th, td { color: whitesmoke; background-color: darkcyan;
+                border:1px solid whitesmoke;
+            }
+    </style>
+    
+</head>
+<body>
+    
+    
+    <h1 style="color:whitesmoke ; text-align:center; background-color:darkcyan"> Credit Card Defaulter Prediction</h1>
+    {% if result == 'Defaulter' %}
+        <h1 style="color: red;">{{ result }}</h1>
+    {% else %}
+        <h1 style="color: green;">{{ result }}</h1>   
+    {% endif %}
+    <form method="post" action="/predict">
+        <label><h2 >Personal Details</h2></label><br>
+        <table style="width:100% ;">
+            <tr>
+                <th class="header-label">Credit Card Limit</th>
+                <th class="header-label">Gender</th>
+                <th class="header-label">Education</th>
+                <th class="header-label">Marital Status</th>
+                <th class="header-label">Age</th>
+                
+              </tr>
+              <tr>
+                <th><input type="number" value= "100000" name="Limit"></th>
+                <th><select name="Gender" id="Gender">
+                    <option value=2>Male</option>
+                    <option value=1>Female</option>
+                </select></th>
+                <th><select name="Education" id="Education">
+                    <option value=1>university</option>
+                    <option value=2>graduate</option>
+                    <option value=3>high school</option>
+                    <option value=4>others</option>
+                </select></th>
+                <th><select name="Marital status" id="Marital_status">
+                    <option value=1>married</option>
+                    <option value=2>single</option>
+                    <option value=0>others</option>
+                </select></th>
+                <th><input type="number" value="25" name="Age"></th>
+                
+              </tr>
+          </table>
+          <br>
+        <label><h2>Number of months delayed on payment for respective months.</h2></label><br>
+        <table style="width:100%; background-color:darkcyan">
+            <tr>
+                <th class="header-label">September</th>
+                <th class="header-label">August</th>
+                <th class="header-label">July</th>
+                <th class="header-label">June</th>
+                <th class="header-label">May</th> 
+                <th class="header-label">April</th> 
+            </tr>
+            <tr>
+                <th><input type="number" value="0" name="rep_sep"></th>
+                <th><input type="number" value="0" name="rep_aug"></th>
+                <th><input type="number" value="0" name="rep_july"></th>
+                <th><input type="number" value="0" name="rep_june"></th>
+                <th><input type="number" value="0" name="rep_may"></th>
+                <th><input type="number" value="0" name="rep_apr"></th>
+            </tr>
+        </table>
+        <br>
+        <label><h2>Total bills of each month</h2></label><br>
+        <table style="width:100%">
+            <tr>
+                <th class="header-label">September</th>
+                <th class="header-label">August</th>
+                <th class="header-label">July</th>
+                <th class="header-label">June</th>
+                <th class="header-label">May</th> 
+                <th class="header-label">April</th> 
+            </tr>
+            <tr>
+                <th><input type="number" value="0" name="bs"></th>
+                <th><input type="number" value="0" name="ba"></th>
+                <th><input type="number" value="0" name="bjl"></th>
+                <th><input type="number" value="0" name="bju"></th>
+                <th><input type="number" value="0" name="bm"></th>
+                <th><input type="number" value="0" name="bap"></th>
+            </tr>
+        </table>
+        <br>
+        <label><h2>Total payment of each month</h2></label><br>
+        <table style="width:100%">
+            <tr>
+                <th class="header-label">September</th>
+                <th class="header-label">August</th>
+                <th class="header-label">July</th>
+                <th class="header-label">June</th>
+                <th class="header-label">May</th> 
+                <th class="header-label">April</th> 
+            </tr>
+            <tr>
+                <th><input type="number" value="0" name="sep"></th>
+                <th><input type="number" value="0" name="aug"></th>
+                <th><input type="number" value="0" name="july"></th>
+                <th><input type="number" value="0" name="june"></th>
+                <th><input type="number" value="0" name="may"></th>
+                <th><input type="number" value="0" name="apr"></th>
+            </tr>
+        </table>
+      
+        <h1><input type="submit" value="Predict"></h1><br><br>
+
+    </form>
+</body>
+</html>
